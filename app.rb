@@ -83,5 +83,6 @@ def query_marvel_api(path, params)
 
   puts "LOOK HERE!"
   puts params
+  $stdout.flush
   #return JSON.parse((RestClient.get request_url, params).body)
 end
