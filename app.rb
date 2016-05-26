@@ -8,29 +8,32 @@ post '/' do
 
   # type == LaunchRequest
   if @request_payload['request']['type'] == 'LaunchRequest'
-    '{
-      "version": "1.0",
-      "response": {
-        "outputSpeech": {
-          "type": "PlainText",
-          "text": "Go."
+    launch_response = {
+      "version" => "1.0",
+      "response" => {
+        "outputSpeech" => {
+          "type" => "PlainText",
+          "text" => "Go."
         },
-        "shouldEndSession": false
+        "shouldEndSession" => false
       }
-    }'
+    }
+    JSON.generate(launch_response)
   else
-    @character_name = @request_payload['request']['intent']['slots']['Character']['value']
+    @character_name =
+     @request_payload['request']['intent']['slots']['Character']['value']
     puts @character_name
 
-    '{
-      "version": "1.0",
-      "response": {
-        "outputSpeech": {
-          "type": "PlainText",
-          "text": "You asked about ' + @character_name + '. The part of me that actually answers your question hasn\'t been built yet."
+    character_response = {
+      "version" => "1.0",
+      "response" => {
+        "outputSpeech" => {
+          "type" => "PlainText",
+          "text" => "You asked about #{character_name}. They're awesome!"
         },
         "shouldEndSession": true
       }
-    }'
+    }
+    JSON.generate(character_response)
   end
 end
