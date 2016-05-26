@@ -54,7 +54,9 @@ def get_character_description(character_name)
 
   api_res = query_marvel_api("characters", params)
 
-  if(api_res["code"] == 200 && api_res["data"]["total"] == 1)
+  if(api_res["code"] != 200)
+    response = "An error occured. Please ask Tony Stark to fix the issue."
+  elsif(api_res["code"] == 200 && api_res["data"]["total"] == 1)
     response = api_res["data"]["results"]["description"]
   elsif(api_res["code"] == 200 && api_res["data"]["total"] == 0)
     response = "I found no characters with that name."
@@ -75,7 +77,7 @@ def query_marvel_api(path, params)
 
   params["ts"] = timestamp
   params["apikey"] = ENV['MARVEL_PUB_KEY']
-  params["hash"] = Digest::MD5.digest(timestamp + ENV['MARVEL_PRI_KEY'] + ENV['MARVEL_PUB_KEY'])
+  params["hash"] = Digest::MD5.hexdigest(timestamp + ENV['MARVEL_PRI_KEY'] + ENV['MARVEL_PUB_KEY'])
 
   params = {
     :params => params
@@ -84,5 +86,5 @@ def query_marvel_api(path, params)
   puts "LOOK HERE!"
   puts params
   $stdout.flush
-  #return JSON.parse((RestClient.get request_url, params).body)
+  return JSON.parse((RestClient.get request_url, params).body)
 end
