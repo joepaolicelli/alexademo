@@ -54,6 +54,9 @@ def get_character_description(character_name)
 
   api_res = query_marvel_api("characters", params)
 
+  puts api_res
+  $stdout.flush
+
   if(api_res["code"] != 200)
     response = "An error occured. Please ask Tony Stark to fix the issue."
   elsif(api_res["code"] == 200 && api_res["data"]["total"] == 1)
