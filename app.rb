@@ -5,8 +5,6 @@ require 'digest'
 
 configure do
   set :root, File.dirname(__FILE__)
-
-  @md5 = Digest::MD5.new
 end
 
 post '/' do
@@ -77,7 +75,7 @@ def query_marvel_api(path, params)
 
   params["ts"] = timestamp
   params["apikey"] = ENV['MARVEL_PUB_KEY']
-  params["hash"] = @md5.digest(timestamp + ENV['MARVEL_PRI_KEY'] + ENV['MARVEL_PUB_KEY'])
+  params["hash"] = Digest::MD5.digest(timestamp + ENV['MARVEL_PRI_KEY'] + ENV['MARVEL_PUB_KEY'])
 
   params = {
     :params => params
