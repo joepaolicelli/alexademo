@@ -1,11 +1,12 @@
 require 'sinatra'
 require 'json'
 require 'rest-client'
+require 'digest'
 
 configure do
   set :root, File.dirname(__FILE__)
 
-  @md5 = OpenSSL::Digest::SHA1.new
+  @md5 = Digest::MD5.new
 end
 
 post '/' do
