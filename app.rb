@@ -60,7 +60,7 @@ def get_character_description(character_name)
   if(api_res["code"] != 200)
     response = "An error occured. Please ask Tony Stark to fix the issue."
   elsif(api_res["code"] == 200 && api_res["data"]["total"] == 1)
-    response = api_res["data"]["results"]["description"]
+    response = api_res["data"]["results"][0]["description"]
   elsif(api_res["code"] == 200 && api_res["data"]["total"] == 0)
     response = "I found no characters with that name."
   elsif(api_res["code"] == 200)
