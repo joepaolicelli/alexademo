@@ -29,7 +29,7 @@ post '/' do
       "response" => {
         "outputSpeech" => {
           "type" => "PlainText",
-          "text" => "You asked about #{character_name}. They're awesome!"
+          "text" => "You asked about #{@character_name}. They're awesome!"
         },
         "shouldEndSession": true
       }
