@@ -72,7 +72,7 @@ def query_marvel_api(path, params)
 
   request_url = "http://gateway.marvel.com:80/v1/public/" + path
 
-  timestamp = Time.now.to_i
+  timestamp = Time.now.to_i.to_s # .to_i returns unix timestamp, .to_s makes it a string
 
   params["ts"] = timestamp
   params["apikey"] = ENV['MARVEL_PUB_KEY']
