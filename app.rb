@@ -76,8 +76,7 @@ def query_marvel_api(path, params)
 
   params["ts"] = timestamp
   params["apikey"] = ENV['MARVEL_PUB_KEY']
-  params["hash"] = @md5.digest(timestamp + ENV['MARVEL_PRI_KEY']
-    + ENV['MARVEL_PUB_KEY'])
+  params["hash"] = @md5.digest(timestamp + ENV['MARVEL_PRI_KEY'] + ENV['MARVEL_PUB_KEY'])
 
   params = {
     :params => params
