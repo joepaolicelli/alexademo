@@ -6,3 +6,5 @@ Thor
 Black Widow
 The Amazing Spider Man
 Spider Woman
+Captain America
+Wolverine
