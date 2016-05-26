@@ -82,6 +82,6 @@ def query_marvel_api(path, params)
   }
 
   puts "LOOK HERE!"
-  puts request_url
+  puts params
   #return JSON.parse((RestClient.get request_url, params).body)
 end
