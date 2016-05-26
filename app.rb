@@ -19,15 +19,15 @@ post '/' do
       }
     }'
   else
-    @sku_amount = @request_payload['request']['intent']['slots']['Item']['value']
-    puts @sku_amount
+    @character_name = @request_payload['request']['intent']['slots']['Character']['value']
+    puts @character_name
 
     '{
       "version": "1.0",
       "response": {
         "outputSpeech": {
           "type": "PlainText",
-          "text": "There are 12 units of ' + @sku_amount + ' in stock."
+          "text": "You asked about ' + @character_name + '. The part of me that actually answers your question hasn\'t been built yet."
         },
         "shouldEndSession": true
       }

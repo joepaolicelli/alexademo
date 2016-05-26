@@ -1,0 +1,3 @@
+GetCharacterDesc tell me about {Character}
+GetCharacterDesc who is {Character}
+GetCharacterDesc who {Character} is
